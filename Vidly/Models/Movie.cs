@@ -17,7 +17,7 @@ namespace Vidly.Models
 
         [Display(Name = "Genre")]
         [Required(ErrorMessage = "El Genero es requerido")]
-        public int GenreId { get; set; }
+        public byte? GenreId { get; set; }
 
         [Display(Name = "Release Date")]
         [Required(ErrorMessage = "El ReleaseDate es requerido")]
@@ -28,7 +28,7 @@ namespace Vidly.Models
         [Display(Name = "Number In Stock")]
         [Required(ErrorMessage = "El NumberInStock es requerido")]
         [Range(1,int.MaxValue,ErrorMessage ="El Stock debe ser mayor a cero")]
-        public int NumberInStock { get; set; }
+        public byte? NumberInStock { get; set; }
 
     }
 }
