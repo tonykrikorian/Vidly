@@ -1,9 +1,11 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Vidly.DTO;
 using Vidly.Models;
 
 namespace Vidly.Controllers.Api
@@ -17,38 +19,41 @@ namespace Vidly.Controllers.Api
             _dbContex = new ApplicationDbContext();
         }
         // GET/ api/customers
-        public IEnumerable<Customer> GetCustomers()
+        public IEnumerable<CustomerDTO> GetCustomers()
         {
-            return _dbContex.Customers.ToList();
+            return _dbContex.Customers.ToList().Select(Mapper.Map<Customer,CustomerDTO>);
         }
 
         //GET / api/customers/1
 
-        public Customer GetCustomer(int id)
+        public CustomerDTO GetCustomer(int id)
         {
             var customer = _dbContex.Customers.SingleOrDefault(x => x.Id == id);
 
             if (customer == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            return customer;
+            return Mapper.Map<Customer,CustomerDTO>(customer);
         }
 
         // POST /api/customers
         [HttpPost]
-        public Customer CreateCustomer(Customer customer)
+        public CustomerDTO CreateCustomer(CustomerDTO customerDTO)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
+            var customer = Mapper.Map<CustomerDTO, Customer>(customerDTO);
+
             _dbContex.Customers.Add(customer);
             _dbContex.SaveChanges();
-            return customer;
+            customerDTO.Id = customer.Id;
+            return customerDTO;
         }
 
         //PUT api/customers/1
         [HttpPut]
-        public void UpdateCustomer(int id, Customer customer)
+        public void UpdateCustomer(int id, CustomerDTO customerDTO)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -58,10 +63,11 @@ namespace Vidly.Controllers.Api
             if (customerInDB == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            customerInDB.Name = customer.Name;
-            customerInDB.BirthDate = customer.BirthDate;
-            customerInDB.IsSuscribedToNewsletter = customer.IsSuscribedToNewsletter;
-            customerInDB.MembershipTypeId = customer.MembershipTypeId;
+            Mapper.Map<CustomerDTO, Customer>(customerDTO, customerInDB);
+            //customerInDB.Name = customer.Name;
+            //customerInDB.BirthDate = customer.BirthDate;
+            //customerInDB.IsSuscribedToNewsletter = customer.IsSuscribedToNewsletter;
+            //customerInDB.MembershipTypeId = customer.MembershipTypeId;
 
             _dbContex.SaveChanges();
         }
