@@ -17,7 +17,6 @@ namespace Vidly.DTO
 
         public bool IsSuscribedToNewsletter { get; set; }
 
-        [Min18YearsIfAMember(ErrorMessage = "Birth Date is required")]
         public DateTime? BirthDate { get; set; }
 
 

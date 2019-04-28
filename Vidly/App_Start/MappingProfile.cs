@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Vidly.DTO;
 using Vidly.Models;
 
 namespace Vidly.App_Start
@@ -11,13 +12,10 @@ namespace Vidly.App_Start
     {
         public MappingProfile()
         {
-            Mapper.CreateMap<Customer, CustomersDTO>();
-            Mapper.CreateMap<CustomersDTO, Customer>();
+            Mapper.CreateMap<Customer, CustomerDTO>();
+            Mapper.CreateMap<CustomerDTO, Customer>();
         }
 
-        protected override void Configure()
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
