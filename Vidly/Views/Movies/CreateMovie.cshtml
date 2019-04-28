@@ -4,15 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (Model.Movie.Id == 0)
-{
-    <h2>Create Movie</h2>
-}
-else
-{
-    <h2>Edit @Model.Movie.Name</h2>
-}
 
+    <h2>@Model.Title</h2>
 @using (Html.BeginForm("SaveMovie", "Movies", FormMethod.Post))
 {
     <div class="form-group">

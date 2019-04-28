@@ -1,0 +1,8 @@
+{
+  "solution": {
+    "path": "Vidly.sln",
+    "projects": [
+      "Vidly\\Vidly.csproj"
+    ]
+  }
+}
