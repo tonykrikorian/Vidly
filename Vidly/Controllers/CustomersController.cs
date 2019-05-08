@@ -24,6 +24,7 @@ namespace Vidly.Controllers
         }
 
         // GET: Customers
+        [Authorize]
         public ActionResult Index()
         {
             var customers = _context.Customers.Include(c=>c.MembershipType).ToList();
