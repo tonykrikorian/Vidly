@@ -28,7 +28,7 @@ namespace Vidly.Controllers
         public ActionResult Index()
         {
             var customers = _context.Customers.Include(c=>c.MembershipType).ToList();
-            if(User.IsInRole("CanManageMovies"))
+            if(User.IsInRole(RolesName.CanManageMovies))
                 return View("List",customers);
             else return View("ReadOnly", customers);
         }
@@ -49,7 +49,7 @@ namespace Vidly.Controllers
             return View("CreateCustomer",viewModel);
         }
         [HttpGet]
-        [Authorize(Roles = "CanManageMovies")]
+        [Authorize(Roles = RolesName.CanManageMovies)]
         public ActionResult CreateCustomer()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
