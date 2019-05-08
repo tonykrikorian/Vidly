@@ -49,6 +49,7 @@ namespace Vidly.Controllers
             return View("CreateCustomer",viewModel);
         }
         [HttpGet]
+        [Authorize(Roles = "CanManageMovies")]
         public ActionResult CreateCustomer()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
