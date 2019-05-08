@@ -28,7 +28,9 @@ namespace Vidly.Controllers
         public ActionResult Index()
         {
             var customers = _context.Customers.Include(c=>c.MembershipType).ToList();
-            return View(customers);
+            if(User.IsInRole("CanManageMovies"))
+                return View("List",customers);
+            else return View("ReadOnly", customers);
         }
 
         [HttpGet]

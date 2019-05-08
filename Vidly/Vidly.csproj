@@ -256,6 +256,10 @@
     <Compile Include="Migrations\201904281636405_CambiarTiposDeDatos.Designer.cs">
       <DependentUpon>201904281636405_CambiarTiposDeDatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905080101081_AddUsersAndRoles.cs" />
+    <Compile Include="Migrations\201905080101081_AddUsersAndRoles.Designer.cs">
+      <DependentUpon>201905080101081_AddUsersAndRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -510,12 +514,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Movies\Random.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
-    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\List.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Movies\EditMovie.cshtml" />
     <Content Include="Views\Customers\CreateCustomer.cshtml" />
     <Content Include="Views\Movies\CreateMovie.cshtml" />
+    <Content Include="Views\Customers\ReadOnly.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -575,6 +580,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904281636405_CambiarTiposDeDatos.resx">
       <DependentUpon>201904281636405_CambiarTiposDeDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905080101081_AddUsersAndRoles.resx">
+      <DependentUpon>201905080101081_AddUsersAndRoles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
