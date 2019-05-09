@@ -1,0 +1,74 @@
+﻿@*@model IEnumerable<Vidly.Models.Movie>*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+@*@if (Model.Count() == 0)
+{
+    <text>Aun no existen peliculas cargadas</text>
+}
+else
+{*@
+    <br />
+    <table id="movies" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Movie</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @*@foreach (var movie in @Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(@movie.Name, "Edit", new { @id = movie.Id })</td>
+                    <td>@movie.Name</td>
+                    <td>
+                        <button type="button" class="btn-link js-delete" data-movie-id="@movie.Id">Delete</button> 
+                    </td>
+                </tr>
+            }*@
+        </tbody>
+    </table>
+@*}*@
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            var table = $('#movies').DataTable({
+                ajax: {
+                    url: '/api/movies',
+                    dataSrc:""
+                },
+                columns: [
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "genre.name",
+                    }
+                ]
+            });
+
+
+            $('#movies').on('click', '.js-delete', function () {
+                var button = $(this);
+                bootbox.confirm("¿Desea borrar la pelicula?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: `api/movies/${button.attr("data-movie-id")}`,
+                            method: "DELETE",
+                            success: function () {
+                                button.parents('tr').remove();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    
+
+}

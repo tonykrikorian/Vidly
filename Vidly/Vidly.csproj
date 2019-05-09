@@ -527,6 +527,7 @@
     <Content Include="Views\Customers\CreateCustomer.cshtml" />
     <Content Include="Views\Movies\CreateMovie.cshtml" />
     <Content Include="Views\Customers\ReadOnly.cshtml" />
+    <Content Include="Views\Movies\ReadOnly.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

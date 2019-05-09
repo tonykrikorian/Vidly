@@ -18,14 +18,19 @@ namespace Vidly.Controllers
             _context = new ApplicationDbContext();
         }
         // GET: Movies
+        [Authorize]
         public ActionResult Index()
         {
             //var movies = _context.Movies.Include(g=>g.Genre).ToList();
             //return View(movies);
-            return View();
+            if (User.IsInRole(RolesName.CanManageMovies))
+                return View("Index");
+            return View("ReadOnly");
         }
 
+       
         [Route("movies/edit/{id}")]
+        [Authorize(Roles= RolesName.CanManageMovies)]
         public ActionResult EditMovie(int id)
         {
             //var movie = _context.Movies
@@ -89,6 +94,7 @@ namespace Vidly.Controllers
             return Content($"{year}/{genre}");
         }
 
+        [Authorize(Roles =RolesName.CanManageMovies)]
         [HttpGet]
         public ActionResult CreateMovie()
         {
