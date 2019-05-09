@@ -13,11 +13,12 @@ namespace Vidly.Models
         [Required(ErrorMessage ="El Nombre es requerido")]
         public string Name { get; set; }
 
-        public Genre Genre { get; set; }
+       
 
         [Display(Name = "Genre")]
         [Required(ErrorMessage = "El Genero es requerido")]
-        public byte? GenreId { get; set; }
+        public byte GenreId { get; set; }
+        public Genre Genre { get; set; }
 
         [Display(Name = "Release Date")]
         [Required(ErrorMessage = "El ReleaseDate es requerido")]
