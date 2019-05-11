@@ -205,6 +205,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
+    <Compile Include="DTO\NewRentalDTO.cs" />
+    <Compile Include="Controllers\Api\RentalController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -285,6 +287,14 @@
     <Compile Include="Migrations\201905092337509_AddPhoneNumberToRegistrationForm.Designer.cs">
       <DependentUpon>201905092337509_AddPhoneNumberToRegistrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905110213189_AddManyToManyRelationshipBetweenCustomersAndMoviesTables.cs" />
+    <Compile Include="Migrations\201905110213189_AddManyToManyRelationshipBetweenCustomersAndMoviesTables.Designer.cs">
+      <DependentUpon>201905110213189_AddManyToManyRelationshipBetweenCustomersAndMoviesTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905110233507_AddNumberAvailableColumnToMoviesTable.cs" />
+    <Compile Include="Migrations\201905110233507_AddNumberAvailableColumnToMoviesTable.Designer.cs">
+      <DependentUpon>201905110233507_AddNumberAvailableColumnToMoviesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -294,6 +304,7 @@
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\RolesName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -616,6 +627,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905092337509_AddPhoneNumberToRegistrationForm.resx">
       <DependentUpon>201905092337509_AddPhoneNumberToRegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905110213189_AddManyToManyRelationshipBetweenCustomersAndMoviesTables.resx">
+      <DependentUpon>201905110213189_AddManyToManyRelationshipBetweenCustomersAndMoviesTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905110233507_AddNumberAvailableColumnToMoviesTable.resx">
+      <DependentUpon>201905110233507_AddNumberAvailableColumnToMoviesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -31,5 +31,7 @@ namespace Vidly.Models
         [Range(1,int.MaxValue,ErrorMessage ="El Stock debe ser mayor a cero")]
         public byte? NumberInStock { get; set; }
 
+        public byte NumberAvailable { get; set; }
+
     }
 }
