@@ -205,6 +205,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
+    <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="DTO\NewRentalDTO.cs" />
     <Compile Include="Controllers\Api\RentalController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
@@ -559,6 +560,7 @@
     <Content Include="Views\Movies\CreateMovie.cshtml" />
     <Content Include="Views\Customers\ReadOnly.cshtml" />
     <Content Include="Views\Movies\ReadOnly.cshtml" />
+    <Content Include="Views\Rentals\CreateRental.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
