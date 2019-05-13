@@ -9,13 +9,13 @@
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
-            <input id="customer" type="text" value="" class="form-control" />
+            <input id="customer" required type="text" value="" class="form-control" />
         </div>
     </div>
     <div class="form-group">
         <label>Movie</label>
         <div class="tt-container">
-            <input id="movie" type="text" value="" class="form-control" />
+            <input id="movie" required type="text" value="" class="form-control" />
         </div>
     </div>
     <div class="row">
@@ -30,12 +30,12 @@
 </form>
 
 @section scripts{
-
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function () {
 
             var vm = {
-                moviesIds:[]
+                moviesIds: []
             };
 
             var customers = new Bloodhound({
@@ -57,7 +57,7 @@
             });
 
 
-               var movies = new Bloodhound({
+            var movies = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
@@ -71,32 +71,33 @@
                 highlight: true,
                 minLength: 3
             }, {
-                name: 'movies',
-                display: 'name',
-                source: movies
-            }).on("typeahead:select", function (e, movie) {
-                $('#movies').append(`<li class="list-group-item">${movie.name}</li>`);
-                $('#movie').typeahead('val', '');
-                vm.moviesIds.push(movie.id);
+                    name: 'movies',
+                    display: 'name',
+                    source: movies
+                }).on("typeahead:select", function (e, movie) {
+                    $('#movies').append(`<li class="list-group-item">${movie.name}</li>`);
+                    $('#movie').typeahead('val', '');
+                    vm.moviesIds.push(movie.id);
 
-            });
+                });
 
-            $('#newRental').submit(function (e) {
-                e.preventDefault();
-                $.ajax({
-                    url: '/api/Rental/NewRental',
-                    method: 'POST',
-                    data: vm
-                })
-                    .done(function () {
-                        console.log('done');
-
+            $('#newRental').validate({
+                submitHandler: function () {
+                    e.preventDefault();
+                    $.ajax({
+                        url: '/api/Rental/NewRental',
+                        method: 'POST',
+                        data: vm
                     })
-                    .fail(function () {
+                        .done(function () {
+                            toastr.success('Rental Successfully recorded')
 
-                    })
+                        })
+                        .fail(function () {
+                            toastr.fail('Something unexpected happens');
+                        })
+                }
             });
-
         });
     </script>
 
