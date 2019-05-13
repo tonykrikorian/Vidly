@@ -5,7 +5,7 @@
 
 <h2>Create New Rental Form</h2>
 
-<form>
+<form id="newRental">
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
@@ -66,7 +66,11 @@
                 }
             });
 
-            $('#movie').typeahead(null, {
+            $('#movie').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 3
+            }, {
                 name: 'movies',
                 display: 'name',
                 source: movies
@@ -75,6 +79,22 @@
                 $('#movie').typeahead('val', '');
                 vm.moviesIds.push(movie.id);
 
+            });
+
+            $('#newRental').submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '/api/Rental/NewRental',
+                    method: 'POST',
+                    data: vm
+                })
+                    .done(function () {
+                        console.log('done');
+
+                    })
+                    .fail(function () {
+
+                    })
             });
 
         });
