@@ -11,7 +11,6 @@ namespace Vidly.Controllers
     {
         public ActionResult Index()
         {
-            throw new Exception();
             return View();
         }
 
